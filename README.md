@@ -1,5 +1,6 @@
 # EZPKL: lovely pickling🥒 for context manager hater👊
 
+![EZPKL character](assets/banner.png)
 컨텍스트 매니저를 열고 닫는 것이 귀찮아서 만들었습니다.
 
 ## 설치
@@ -12,7 +13,7 @@ pip install ezpkl
 
 ## 사용법
 
-### 객체 저장
+### 객체 저장하기
 
 ```python
 from ezpkl import save_pkl
