@@ -32,11 +32,11 @@ def save_pkl(var, file_name: str = None) -> None:
             else:
                 file_name = "apple.pkl"
                 print("I couldn't find the variable name, but here's a fruit for you instead!")
-        elif not file_name.endswith('.pkl'):
+        elif not file_name.endswith(".pkl"):
             file_name = f"{file_name}.pkl"
 
         try:
-            with open(file_name, 'wb') as file:
+            with open(file_name, "wb") as file:
                 pickle.dump(var, file)
             print(f"Variable '{file_name}' saved.")
         except (FileNotFoundError, PermissionError) as e:
@@ -44,9 +44,10 @@ def save_pkl(var, file_name: str = None) -> None:
     finally:
         del frame
 
+
 def load_pkl(filename: str):
     try:
-        with open(filename, 'rb') as file:
+        with open(filename, "rb") as file:
             return pickle.load(file)
     except FileNotFoundError:
         print(f"File '{filename}' not found.")
