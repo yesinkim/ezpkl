@@ -32,7 +32,7 @@ save_pkl(var=a, file_name='a_list_temp')
 ```python
 from ezpkl import load_pkl
 
-a = load_pkl(a)
+a = load_pkl('a.pkl')
 ```
 
 ## 라이선스
