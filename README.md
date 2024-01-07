@@ -1,6 +1,6 @@
 # EZPKL: lovely pickling🥒 for context manager hater👊
 
-![EZPKL character](assets/banner.png)
+![EZPKL character]("https://raw.githubusercontent.com/yesinkim/ezpkl/main/assets/banner.png")
 컨텍스트 매니저를 열고 닫는 것이 귀찮아서 만들었습니다.
 
 ## 설치
