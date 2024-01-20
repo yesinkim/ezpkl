@@ -1,7 +1,9 @@
 """Easy peasy lemon squeezy!🍋🤝🍸"""
 import inspect
 import pickle
+import random
 
+from ezpkl.refrigerator import ingredients
 
 # TODO: add filename, folder opt
 def save_pkl(var, file_name: str = None) -> None:
@@ -30,8 +32,11 @@ def save_pkl(var, file_name: str = None) -> None:
             if var_name:
                 file_name = f"{var_name}.pkl"
             else:
-                file_name = "apple.pkl"
-                print("I couldn't find the variable name, but here's a fruit for you instead!")
+                
+                file_name = f"{random.choice(ingredients)}.pkl"
+                print(
+                    "I couldn't find the variable name, but here's some ingredient for you instead!"
+                )
         elif not file_name.endswith(".pkl"):
             file_name = f"{file_name}.pkl"
 
