@@ -5,7 +5,7 @@ with open("README.md", encoding="utf-8") as f:
 
 setup(
     name="ezpkl",
-    version="0.1.2",
+    version='{{VERSION_PLACEHOLDER}}',
     description="lovely pickling🥒 for context manager hater👊",
     long_description=long_description,
     long_description_content_type="text/markdown",
