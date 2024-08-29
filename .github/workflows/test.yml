@@ -25,9 +25,6 @@ jobs:
       - name: Run tests
         run: |
           python -m pytest
-        # 테스트 실패 시 워크플로우 종료
-        if: ${{ failure() }}
-        continue-on-error: false
 
   tag:
     name: Tag version🔖
