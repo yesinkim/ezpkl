@@ -4,56 +4,8 @@ on:
   push:
     tags:
       - '*'
-  pull_request:
-    branches:
-      - main
 
 jobs:
-  test:
-    name: Run tests
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Set up Python
-        uses: actions/setup-python@v3
-        with:
-          python-version: '3.x'
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install pytest
-
-      - name: Run tests
-        run: |
-          python -m pytest
-
-  get-version:
-    name: Tag version
-    runs-on: ubuntu-latest
-    needs: test
-    if: github.event_name == 'pull_request' && github.event.pull_request.merged == true
-    steps:
-      - uses: actions/checkout@v3
-      - name: Set up Python
-        uses: actions/setup-python@v3
-        with:
-          python-version: '3.x'
-
-      - name: Get version from __init__.py
-        id: get_version
-        run: |
-          VERSION=$(grep -oP '(?<=__version__ = ")[^"]*' ezpkl/__init__.py)
-          echo ::set-output name=VERSION::$VERSION
-
-      - name: Create tag
-        run: |
-          git config --global user.name 'github-actions'
-          git config --global user.email 'github-actions@github.com'
-          git tag -a v${{ steps.get_version.outputs.VERSION }} -m "Release version ${{ steps.get_version.outputs.VERSION }}"
-          git push origin v${{ steps.get_version.outputs.VERSION }}
-
   pypi-publish:
     name: upload release to PyPI
     runs-on: ubuntu-latest
@@ -88,5 +40,6 @@ jobs:
       - name: Build and publish
         run: |
           python setup.py sdist bdist_wheel
+
       - name: Publish package distributions to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
