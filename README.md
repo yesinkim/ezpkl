@@ -45,6 +45,53 @@ from ezpkl import load_pkl
 a = load_pkl('a.pkl')
 ```
 
+### Save Object to txt
+
+```python
+from ezpkl import save_txt
+
+a = [1, 2, 3, 4, 5]
+
+# 'a.txt' will be saved in the current directory.
+save_txt(data=a)
+
+# 'a_list_temp.txt' will be saved in the current directory.
+save_txt(data=a, file_name='a_list_temp')
+```
+
+### Load Object
+
+```python
+from ezpkl import load_txt
+
+a = load_txt('a.txt')
+```
+
+### Save List Object to txt with separator
+
+```python
+from ezpkl import save_txt
+
+a = ["apple", "banana", "cherry"]
+
+# 'a.txt' will be saved in the current directory with newline separator (default).
+save_txt(data=a)
+# a.txt file content:
+# apple
+# banana
+# cherry
+
+# 'a_list_temp.txt' will be saved in the current directory with space separator.
+save_txt(data=a, file_name='a_list_temp', separator=' ')
+# a_list_temp.txt file content:
+# apple banana cherry
+
+# 'a_list_temp.txt' will be saved in the current directory without separator.
+save_txt(data=a, file_name='a_list_temp', separator=None)
+# a_list_temp.txt file content:
+# applebananacherry
+```
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
