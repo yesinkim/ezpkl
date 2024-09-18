@@ -1,18 +1,18 @@
 """Make your life simply"""
-
 import inspect
 import random
+from typing import Union
 
 from ezpkl.refrigerator import ingredients
 
 
-def save_txt(data, file_name: str = None, newline: bool = True) -> None:
+def save_txt(data, file_name: str = None, separator: str = "\n") -> None:
     """Saves data to a text file.
 
     Args:
         data: The data to be saved. Can be a string, list, or any other object that can be converted to a string.
         file_name: The name of the text file. If not provided, the function attempts to determine the variable name from the previous frame's local variables.
-        newline: Whether to add a newline character at the end of each line. Defaults to True.
+        separator: The separator to use between items in a list. Defaults to "\n", which means items will be joined with a newline character.
 
     Returns:
         None
@@ -41,10 +41,10 @@ def save_txt(data, file_name: str = None, newline: bool = True) -> None:
         try:
             with open(file_name, "w") as file:
                 if isinstance(data, list):
-                    if newline:
-                        file.write("\n".join(str(item) for item in data))
+                    if separator is None:
+                        file.write("".join(str(item) for item in data))
                     else:
-                        file.write(" ".join(str(item) for item in data))
+                        file.write(separator.join(str(item) for item in data))
                 else:
                     file.write(str(data))
             print(f"Data saved to '{file_name}'.")
@@ -54,7 +54,7 @@ def save_txt(data, file_name: str = None, newline: bool = True) -> None:
         del frame
 
 
-def load_txt(filename: str):
+def load_txt(filename: str) -> Union[str, None]:
     """Loads data from a text file.
 
     Args:
